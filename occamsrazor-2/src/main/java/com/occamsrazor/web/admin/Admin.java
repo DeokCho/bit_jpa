@@ -1,10 +1,8 @@
-package com.occamsrazor.web.member;
+package com.occamsrazor.web.admin;
 
 import lombok.Data;
 
 @Data
-public class Member {
+public class Admin {
 	private String userid,passwd,name,ssn, addr;
-	
-	
 }

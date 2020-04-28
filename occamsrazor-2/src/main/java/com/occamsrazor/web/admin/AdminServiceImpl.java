@@ -1,31 +1,31 @@
-package com.occamsrazor.web.member;
+package com.occamsrazor.web.admin;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class MemberServiceImpl implements MemberService{
-	private Member[] members;
+public class AdminServiceImpl implements AdminService{
+	private Admin[] members;
 	private int count;
 	
-	public MemberServiceImpl() {
-		members = new Member[5];
+	public AdminServiceImpl() {
+		members = new Admin[5];
 		count = 0;
 	}
 
 	@Override
-	public void add(Member member) {
+	public void add(Admin member) {
 		members[count] = member;
 		count++;
 	}
 
 	@Override
-	public Member[] list(Member member) {
+	public Admin[] list(Admin member) {
 		return members;
 	}
 
 	@Override
-	public Member detail(String userid) {
-		Member member = null;
+	public Admin detail(String userid) {
+		Admin member = null;
 		for(int i=0; i<count; i++) {
 			if(userid.equals(members[i].getUserid())) {
 				member = members[i];
@@ -40,7 +40,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void update(Member member) {
+	public void update(Admin member) {
 		for(int i=0; i<count; i++) {
 			if(member.getUserid().equals(members[i].getUserid())) {
 				members[i].setPasswd(member.getPasswd());
@@ -50,7 +50,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void delete(Member member) {
+	public void delete(Admin member) {
 		for(int i=0; i<count; i++) {
 			if(member.getUserid().equals(members[i].getUserid())
 					&&
@@ -63,7 +63,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public boolean login(Member member) {
+	public boolean login(Admin member) {
 		boolean ok = false;
 		for(int i=0; i<count; i++) {
 			if(member.getUserid().equals(members[i].getUserid())

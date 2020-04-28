@@ -1,4 +1,3 @@
-  
 package com.occamsrazor.web.user;
 
 import lombok.Data;

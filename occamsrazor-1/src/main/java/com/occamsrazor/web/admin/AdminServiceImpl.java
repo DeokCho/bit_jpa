@@ -4,34 +4,34 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AdminServiceImpl implements AdminService{
-	private Admin[] members;
+	private Admin[] admins;
 	private int count;
 	
 	public AdminServiceImpl() {
-		members = new Admin[5];
+		admins = new Admin[5];
 		count = 0;
 	}
 
 	@Override
-	public void add(Admin member) {
-		members[count] = member;
+	public void add(Admin admin) {
+		admins[count] = admin;
 		count++;
 	}
 
 	@Override
-	public Admin[] list(Admin member) {
-		return members;
+	public Admin[] list(Admin admin) {
+		return admins;
 	}
 
 	@Override
 	public Admin detail(String userid) {
-		Admin member = null;
+		Admin admin = null;
 		for(int i=0; i<count; i++) {
-			if(userid.equals(members[i].getUserid())) {
-				member = members[i];
+			if(userid.equals(admins[i].getUserid())) {
+				admin = admins[i];
 			}
 		}
-		return member;
+		return admin;
 	}
 
 	@Override
@@ -40,35 +40,35 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void update(Admin member) {
+	public void update(Admin admin) {
 		for(int i=0; i<count; i++) {
-			if(member.getUserid().equals(members[i].getUserid())) {
-				members[i].setPasswd(member.getPasswd());
+			if(admin.getUserid().equals(admins[i].getUserid())) {
+				admins[i].setPasswd(admin.getPasswd());
 				break;
 			}
 		}
 	}
 
 	@Override
-	public void delete(Admin member) {
+	public void delete(Admin admin) {
 		for(int i=0; i<count; i++) {
-			if(member.getUserid().equals(members[i].getUserid())
+			if(admin.getUserid().equals(admins[i].getUserid())
 					&&
-					member.getPasswd().equals(members[i].getPasswd())) {
-				members[i] = members[count-1];
-				members[count-1]=null;
+					admin.getPasswd().equals(admins[i].getPasswd())) {
+				admins[i] = admins[count-1];
+				admins[count-1]=null;
 				count--;
 			}
 		}
 	}
 
 	@Override
-	public boolean login(Admin member) {
+	public boolean login(Admin admin) {
 		boolean ok = false;
 		for(int i=0; i<count; i++) {
-			if(member.getUserid().equals(members[i].getUserid())
+			if(admin.getUserid().equals(admins[i].getUserid())
 					&&
-					member.getPasswd().equals(members[i].getPasswd())) {
+					admin.getPasswd().equals(admins[i].getPasswd())) {
 				ok = true;
 				break;
 			}

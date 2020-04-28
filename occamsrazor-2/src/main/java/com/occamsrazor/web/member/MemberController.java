@@ -23,6 +23,9 @@ public class MemberController {
 		memberService.add(member);
 		return (memberService.count() == (current+1))? Messenger.SUCCESS : Messenger.FAIL;
 	}
+	
+	
+	
 	@PostMapping("/login")
 	public Messenger login(@RequestBody Member member) {
 		return (memberService.login(member))? Messenger.SUCCESS : Messenger.FAIL;

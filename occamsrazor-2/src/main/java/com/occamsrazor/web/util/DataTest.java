@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class FileTest {
+public class DataTest {
 //	public final static String FILE_PATH = "C:\\Users\\user\\spring-workspace\\occamsrazor\\src\\main\\resources\\static\\member\\";
 //	public void main(String[] args) {
 //		try {

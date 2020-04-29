@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
+import com.occamsrazor.web.util.Data;
 import javax.swing.JOptionPane;
 
 import java.util.Set;
@@ -20,16 +20,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{
-	public final static String FILE_PATH = "C:\\Users\\bit\\spring-workspace\\occamsrazor\\src\\main\\resources\\static\\user\\";
+	
 
 	@Override
 	public void add(User user) {
 		try {
-			File file = new File(FILE_PATH+"list.csv");
+			File file = new File(Data.USER_PATH.toString()+Data.LIST+Data.CSV.toString());
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
 					String message = user.toString();
-					System.out.println(message);
 					writer.write(message);
 					writer.newLine();
 					writer.flush();
@@ -71,7 +70,7 @@ public class UserServiceImpl implements UserService{
 		List<User> userlist = new ArrayList<>();
 		List<String> list = new ArrayList<>();
 		try {
-			File file = new File(FILE_PATH+"list.csv");
+			File file = new File(Data.USER_PATH.toString()+Data.LIST+Data.CSV.toString());
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message = "";
 			while((message = reader.readLine()) != null) {

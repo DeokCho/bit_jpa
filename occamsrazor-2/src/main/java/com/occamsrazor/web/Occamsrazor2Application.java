@@ -8,6 +8,8 @@ public class Occamsrazor2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Occamsrazor2Application.class, args);
+		
+		
 	}
 
 }

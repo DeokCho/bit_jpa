@@ -15,7 +15,6 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public void insert(Admin admin) {
-		System.out.println("3. AdminDaoImpl insert "+admin);
 		try {
 			BufferedWriter writer = new BufferedWriter(
 									new FileWriter(
@@ -23,7 +22,6 @@ public class AdminDaoImpl implements AdminDao{
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
-			System.out.println("4. File input success ");
 		}catch(Exception e) {
 			System.out.println(Messenger.FILE_INSERT_ERROR);
 		}

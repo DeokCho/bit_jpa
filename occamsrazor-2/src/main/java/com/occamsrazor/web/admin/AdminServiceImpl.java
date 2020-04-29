@@ -15,10 +15,6 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Override
 	public void register(Admin admin) {
-		/*
-		 employNumber, passwd ,name , position, profile, email, phoneNumber, registerDate;
-		 * */
-		System.out.println("2. AdminServiceImpl register "+admin);
 		admin.setEmployNumber(createEmployNumber());
 		admin.setPasswd("1");
 		admin.setRegisterDate(createCurrentDate());

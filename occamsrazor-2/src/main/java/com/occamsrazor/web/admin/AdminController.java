@@ -24,9 +24,7 @@ public class AdminController {
 	
 	@PostMapping("")
 	public Messenger post(@RequestBody Admin admin) {
-		System.out.println("1. AdminController post "+admin);
 		adminService.register(admin);
-		System.out.println("5. AdminController post ");
 		return Messenger.SUCCESS;
 	}
 	@GetMapping("")

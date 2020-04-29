@@ -1,10 +1,8 @@
 package com.occamsrazor.web.admin;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.annotation.processing.Messager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,52 +17,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.occamsrazor.web.util.Messenger;
 
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admins")
 public class AdminController {
+	
 	@Autowired AdminService adminService;
-	@PostMapping("/join")
-	public Messenger join(@RequestBody Admin admin) {
-		int count = adminService.count();
-		adminService.saveFile(admin);
-		// return (adminService.count() == count + 1) ? Messenger.SUCCESS : Messenger.FAIL;
+	
+	@PostMapping("")
+	public Messenger post(@RequestBody Admin admin) {
+		System.out.println("1. AdminController post "+admin);
+		adminService.register(admin);
+		System.out.println("5. AdminController post ");
 		return Messenger.SUCCESS;
 	}
-	@GetMapping("/list")
+	@GetMapping("")
 	public List<Admin> list(){
-		// return adminService.list();
-		return adminService.readFile();
+		return adminService.findAll();
+	}
+	@GetMapping("/{employNumber}")  
+	public Admin detail(@PathVariable String employNumber) {
+		return adminService.findOne(employNumber);
+	}
+	@PutMapping("/{employNumber}")
+	public Messenger put(@RequestBody Admin admin) {
+		adminService.modify(admin);
+		return Messenger.SUCCESS;
+	}
+	@DeleteMapping("/{employNumber}")
+	public Messenger delete(@RequestBody Admin admin) {
+		adminService.remove(admin);
+		return Messenger.SUCCESS;
 	}
 	
-	@PostMapping("/login")
-	public Map<String,Object> login(@RequestBody Admin admin) {
-		Map<String,Object> returnMap = new HashMap<>();
-		Admin loginedAdmin = adminService.login(admin);
-		if(loginedAdmin != null) {
-			returnMap.put("admin", loginedAdmin);
-			returnMap.put("messenger", Messenger.SUCCESS);
-		}else {
-			returnMap.put("messenger", Messenger.FAIL);
-		}
-		return returnMap;
-	}
-	@GetMapping("/detail/{adminid}")
-	public Admin detail(@PathVariable String adminid) {
-		return adminService.detail(adminid);
-	}
-	@PutMapping("/update")
-	public Messenger update(@RequestBody Admin admin) {
-		System.out.println("update 정보 ::: "+admin);
-		return (adminService.update(admin)) ? Messenger.SUCCESS: Messenger.FAIL;
-	}
-	@DeleteMapping("/remove/{adminid}")
-	public Messenger remove(@PathVariable String adminid) {
-		System.out.println("delete 정보 ::: "+adminid);
-		return (adminService.remove(adminid)) ? Messenger.SUCCESS: Messenger.FAIL;
-	}
-	
-	@GetMapping("/idsearch/{adminid}")
-	public Messenger idSearch(@PathVariable String adminid) {
-		return (adminService.idSearch(adminid))? Messenger.SUCCESS: Messenger.FAIL;
-	}
-
 }

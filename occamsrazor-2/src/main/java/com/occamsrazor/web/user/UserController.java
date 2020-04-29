@@ -15,48 +15,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.occamsrazor.web.admin.Admin;
 import com.occamsrazor.web.util.Messenger;
 
+import lombok.Getter;
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
-	@PostMapping("/join")
-	public Messenger join(@RequestBody User user) {
-		int count = userService.count();
-		userService.add(user);
-		return (userService.count() == count + 1) ? Messenger.SUCCESS : Messenger.FAIL;
-	}
-	@GetMapping("/list")
-	public List<User> list(){
-		return userService.list();
+	
+	@PostMapping("")
+	public Messenger post(@RequestBody User user) {
+		userService.register(user);
+		return Messenger.SUCCESS;
 	}
 	
-	@PostMapping("/login")
-	public Map<String,Object> login(@RequestBody User user) {
-		Map<String,Object> returnMap = new HashMap<>();
-		User loginedUser = userService.login(user);
-		if(loginedUser != null) {
-			returnMap.put("user", loginedUser);
-			returnMap.put("messenger", Messenger.SUCCESS);
-		}else {
-			returnMap.put("messenger", Messenger.FAIL);
-		}
-		return returnMap;
+	@GetMapping("")
+	public List<User> list(){
+		return userService.findAll();
 	}
-	@GetMapping("/detail/{userid}")
+	
+	@GetMapping("/{userid}")
 	public User detail(@PathVariable String userid) {
-		return userService.detail(userid);
+		return userService.findOne(userid);
 	}
-	@PutMapping("/update")
+	
+	@PutMapping("/{userid}")
 	public Messenger update(@RequestBody User user) {
-		System.out.println("update 정보 ::: "+user);
-		return (userService.update(user)) ? Messenger.SUCCESS: Messenger.FAIL;
+		userService.modify(user);
+		return Messenger.SUCCESS;
 	}
-	@DeleteMapping("/remove/{userid}")
-	public Messenger remove(@PathVariable String userid) {
-		System.out.println("delete 정보 ::: "+userid);
-		return (userService.remove(userid)) ? Messenger.SUCCESS: Messenger.FAIL;
+	
+	@DeleteMapping("/{userid}")
+	public Messenger delete(@RequestBody User user) {
+		userService.remove(user);
+		return Messenger.SUCCESS;
 	}
+	
 	
 }

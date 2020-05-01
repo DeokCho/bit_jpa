@@ -43,7 +43,21 @@ $('#register_button').click(e=>{
 
 $('#access_button').click(e=>{
 	e.preventDefault()
-	
+	$.ajax({
+		url:'',
+		type:'',
+		data:JSON.stringify({
+			
+		}),
+		dataType:'',
+		contentType:'',
+		success: e=>{
+			
+		},
+		error: (r,x,e)=>{
+			alert(r.status)
+		}
+	})
 })
 </script>
 </body>

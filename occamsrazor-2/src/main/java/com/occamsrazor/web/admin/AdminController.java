@@ -21,6 +21,7 @@ import com.occamsrazor.web.util.Messenger;
 public class AdminController {
 	
 	@Autowired AdminService adminService;
+	@Autowired Admin admin;
 	
 	@PostMapping("")
 	public Messenger post(@RequestBody Admin admin) {

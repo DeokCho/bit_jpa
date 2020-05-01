@@ -1,9 +1,6 @@
 package com.occamsrazor.web.user;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,13 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.occamsrazor.web.admin.Admin;
 import com.occamsrazor.web.util.Messenger;
 
-import lombok.Getter;
-
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 	@Autowired UserService userService;
 	
@@ -32,13 +26,13 @@ public class UserController {
 	}
 	
 	@GetMapping("")
-	public List<User> list(){
-		return userService.findAll();
+	public List<User> list(User user){
+		return userService.list(user);
 	}
 	
 	@GetMapping("/{userid}")
-	public User detail(@PathVariable String userid) {
-		return userService.findOne(userid);
+	public List<User> detail(@PathVariable String userid){
+		return userService.detail(userid);
 	}
 	
 	@PutMapping("/{userid}")
@@ -52,6 +46,5 @@ public class UserController {
 		userService.remove(user);
 		return Messenger.SUCCESS;
 	}
-	
 	
 }

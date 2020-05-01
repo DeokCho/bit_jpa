@@ -1,14 +1,26 @@
 package com.occamsrazor.web.user;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.occamsrazor.web.util.Data;
+
 @Repository
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl implements UserDao{
 
 	@Override
 	public void insert(User user) {
+		try {
+			BufferedWriter writer = new BufferedWriter(
+									new FileWriter(
+									new File(Data.USER_PATH.toString()+Data.LIST+Data.CSV)));
+		}catch(Exception e) {
+			
+		}
 		
 	}
 
@@ -18,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User selectOne(String userid) {
+	public List<User> selectOne(String userid) {
 		return null;
 	}
 
@@ -31,5 +43,6 @@ public class UserDaoImpl implements UserDao {
 	public void delete(User user) {
 		
 	}
+
 
 }

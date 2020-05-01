@@ -3,13 +3,15 @@ package com.occamsrazor.web.user;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter @Setter
 public class User {
-	private String userid,passwd,name,ssn, addr, profile, email, registerDate;
+	private String  name, userid, passwd, ssn, addr, joinDate;
+	
 	@Override
 	public String toString() {
-		return String.format("%s,%s,%s,%s,%s", userid,passwd,name,ssn, addr);
+		return String.format("%s,%s,%s,%s,%s,%s", 
+				name,userid,passwd,ssn,addr,joinDate);
 	}
+	
 }

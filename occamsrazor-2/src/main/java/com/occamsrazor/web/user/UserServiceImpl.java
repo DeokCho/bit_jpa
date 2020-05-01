@@ -1,20 +1,8 @@
 package com.occamsrazor.web.user;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import com.occamsrazor.web.util.Data;
-import javax.swing.JOptionPane;
-
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,19 +10,23 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired UserDao userDao;
+	private String joinDate() {
+		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+	}
 	
 	@Override
 	public void register(User user) {
+		user.setJoinDate(joinDate());
 		userDao.insert(user);
 	}
-
+	
 	@Override
-	public List<User> findAll() {
+	public List<User> list(User user) {
 		return userDao.selectAll();
 	}
 
 	@Override
-	public User findOne(String userid) {
+	public List<User> detail(String userid) {
 		return userDao.selectOne(userid);
 	}
 
@@ -48,6 +40,5 @@ public class UserServiceImpl implements UserService{
 		userDao.delete(user);
 	}
 
-	
 	
 }

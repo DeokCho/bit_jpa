@@ -4,11 +4,11 @@ import java.util.List;
 
 public interface UserService {
 
+	List<User> list(User user);
+
+	List<User> detail(String userid);
+
 	void register(User user);
-
-	List<User> findAll();
-
-	User findOne(String userid);
 
 	void modify(User user);
 

@@ -5,7 +5,8 @@
     <title>사용자 페이지</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/resources/css/global.css" />
-    <script type="text/javascript" src="resources/js/user.js"></script>
+    <script type="text/javascript" src="/resources/js/user.js"></script>
+    <script type="text/javascript" src="/resources/js/admin.js"></script>
 </head>
 <body>
     <table id="kcdc">
@@ -30,8 +31,10 @@
             </td>
         </tr>
         <tr>
-            <td id="content" colspan="4">
-                <img src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg">
+            <td colspan="4">
+            	<div id="content" style="width: 1200px; height: 500px;margin: 0 auto">
+            		<img src="http://www.cdc.go.kr/cdc/img/main/visual_default_main_01.jpg">
+            	</div>
             </td>
         </tr>
         <tr id="menu_2">
@@ -55,8 +58,7 @@
     </table>
  <script>
  	user.init()
-
-    
+     
  </script>
 </body>
 

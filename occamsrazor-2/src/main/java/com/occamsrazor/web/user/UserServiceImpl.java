@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void register(User user) {
-		user.setJoinDate(joinDate());
+		user.setRegisterDate(joinDate());
 		userDao.insert(user);
 	}
 	

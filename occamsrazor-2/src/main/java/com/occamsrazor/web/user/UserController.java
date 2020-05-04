@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.occamsrazor.web.util.Messenger;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
 	

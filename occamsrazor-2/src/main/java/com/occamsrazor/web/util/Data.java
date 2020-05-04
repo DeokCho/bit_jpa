@@ -3,7 +3,9 @@ package com.occamsrazor.web.util;
 import java.io.File;
 
 public enum Data {
-	USER_PATH, ADMIN_PATH, CSV, LIST;
+	USER_PATH, ADMIN_PATH, CSV, LIST,USER_LIST,ADMIN_LIST;
+	
+	
 	
 	@Override
 	public String toString() {
@@ -13,13 +15,15 @@ public enum Data {
 		case ADMIN_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"user"+File.separator
 							+"git"+File.separator+"repository4"+File.separator+"occamsrazor-2"+File.separator
 							+"src"+File.separator+"main"+File.separator+"resources"+File.separator
-							+"static"+File.separator+"admin"+File.separator; break;
+							+"static"+File.separator+"resources"+File.separator+"file"+File.separator; break;
 		case USER_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"user"+File.separator
 				+"git"+File.separator+"repository4"+File.separator+"occamsrazor-2"+File.separator
-				+"src"+File.separator+"main"+File.separator+"resources"+File.separator+"static"
-				+File.separator+"user"+File.separator; break;
+				+"src"+File.separator+"main"+File.separator+"resources"+File.separator
+				+"static"+File.separator+"resources"+File.separator+"file"+File.separator; break;
 		case CSV: returnValue = ".csv";break;
 		case LIST: returnValue = "list";break;
+		case USER_LIST: returnValue="user_list.csv"; break;
+		case ADMIN_LIST: returnValue="admin_list.csv"; break;
 		default:
 			break;
 		}

@@ -18,6 +18,7 @@ import com.occamsrazor.web.util.Messenger;
 @RequestMapping("/users")
 public class UserController {
 	@Autowired UserService userService;
+	@Autowired User user;
 	
 	@PostMapping("")
 	public Messenger post(@RequestBody User user) {
@@ -27,12 +28,12 @@ public class UserController {
 	
 	@GetMapping("")
 	public List<User> list(User user){
-		return userService.list(user);
+		return userService.findAll();
 	}
 	
 	@GetMapping("/{userid}")
-	public List<User> detail(@PathVariable String userid){
-		return userService.detail(userid);
+	public User detail(@PathVariable String userid){
+		return userService.findOne(userid);
 	}
 	
 	@PutMapping("/{userid}")

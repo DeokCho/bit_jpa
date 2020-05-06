@@ -32,7 +32,7 @@ user = (()=>{
 		     	
 		     })
 		     $('#access_a').click(e=>{
-		    	 alert('접소오옥')
+		    	 alert('접속')
 		    	 e.preventDefault()
 		    	 $('#content').empty()
 		    	 $('#content').html(adminVue.login())

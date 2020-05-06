@@ -3,15 +3,15 @@ package com.occamsrazor.web.user;
 import java.util.List;
 
 public interface UserService {
+	public List<User> findAll();
 
-	List<User> list(User user);
-
-	List<User> detail(String userid);
+	public User findOne(String userid);
 
 	void register(User user);
 
 	void modify(User user);
 
 	void remove(User user);
+
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired UserDao userDao;
+	
 	private String joinDate() {
 		return new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 	}
@@ -21,12 +22,12 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public List<User> list(User user) {
+	public List<User> findAll() {
 		return userDao.selectAll();
 	}
 
 	@Override
-	public List<User> detail(String userid) {
+	public User findOne(String userid) {
 		return userDao.selectOne(userid);
 	}
 

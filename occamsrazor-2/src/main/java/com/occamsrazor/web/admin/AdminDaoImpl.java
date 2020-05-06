@@ -1,8 +1,11 @@
 package com.occamsrazor.web.admin;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -29,11 +32,34 @@ public class AdminDaoImpl implements AdminDao{
 
 	@Override
 	public List<Admin> selectAll() {
-		List<Admin> list = null;
+		List<Admin> list = new ArrayList<>();
+		List<String> temp = new ArrayList<>();
 		try {
+			File file = new File(Data.ADMIN_PATH+"admin_list.csv");
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String message = "";
+			while ((message = reader.readLine()) != null){
+				temp.add(message);
+			}
+			reader.close();
 			
 		}catch(Exception e) {
+			System.out.println("에러");
+		}
+		Admin a = null;
+		for(int i=0; i<temp.size(); i++) {
+			a = new Admin();
+			String[] arr = temp.get(i).split(",");
 			
+			a.setEmployNumber(arr[0]);
+			a.setPasswd(arr[1]);
+			a.setName(arr[2]);
+			a.setPosition(arr[3]);
+			a.setProfile(arr[4]);
+			a.setEmail(arr[5]);
+			a.setPhoneNumber(arr[6]);
+			a.setRegisterDate(arr[7]);
+			list.add(a);
 		}
 		return list;
 	}

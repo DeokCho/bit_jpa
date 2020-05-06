@@ -15,10 +15,11 @@ public class LostDaoImpl implements LostDao{
 
 	@Override
 	public List<Lost> selectAll() {
+		System.out.println("3");
 		List<Lost> list = new ArrayList<>();
 		List<String> temp = new ArrayList<>();
 		try {
-			File file = new File(Data.ADMIN_PATH+"lost.csv");
+			File file = new File(Data.ADMIN_PATH.toString()+"lost.csv");
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message = "";
 			while((message = reader.readLine())!=null) {

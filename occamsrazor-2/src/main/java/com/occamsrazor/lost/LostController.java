@@ -16,6 +16,7 @@ public class LostController {
 	
 	@GetMapping("")
 	public List<Lost> list(){
+		System.out.println("1");
 		return lostService.findAll();
 	}
 

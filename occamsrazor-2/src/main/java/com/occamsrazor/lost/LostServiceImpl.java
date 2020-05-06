@@ -11,6 +11,7 @@ public class LostServiceImpl implements LostService {
 
 	@Override
 	public List<Lost> findAll() {
+		System.out.println("2");
 		return lostDao.selectAll();
 	}
 }

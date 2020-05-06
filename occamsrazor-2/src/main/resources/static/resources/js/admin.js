@@ -56,11 +56,12 @@ admin = (() => {
 			                        })  	
 			                   	}) // each 	
 			                }) // getJSON 
-				$('#search').click(e=>{
+				$('#lost').click(e=>{
 					e.preventDefault()
 					$('#userData').empty()
+					alert('1')
 					$.getJSON('/losts', d=>{
-						$.each(d,(i,j) =>{
+						$.each(d, (i, j) => {
 							$(`<tr>
 		                        	<td>
 		                                <span>${j.no1}</span>

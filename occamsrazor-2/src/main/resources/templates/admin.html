@@ -43,16 +43,22 @@
             top: 0;
             width: 100%;
         }
-        #userData {
+        #userData, #items {
             border: 1px solid black;
             text-align: center;
             margin: 0 auto;
         }
-        #userData tr {
+        #userData tr th, #items tr th {
+            border: 1px solid black;
+            text-align: center;
+            margin: 0 auto;
+            background-color: yellow
+        }
+        #userData tr, #items tr {
             height: 30px;
             border: 1px solid black;
         }
-        #userData tr td {
+        #userData tr td, #items tr td {
             width: 150px;
             border: 1px solid black;
         }
@@ -103,13 +109,13 @@
         <tr>
             <td style="border: 3px solid black; width: 20%;margin-top: 200px">
             	<div >
-            		<h3 id="total_count"></h3>
-            		<div > 이름 조회 : <input type="text" /></div>
+            		<h3 id="total_count" style="margin-bottom: 50px">총회원수 : </h3>
+            		<div style="margin-bottom: 50px">이름 조회 : <input type="text" /></div>
             		<ul id="side_menu">
-						  <li><a class="active" href="#home">사용자 목록</a></li>
-						  <li><a href="#news">관리자 목록</a></li>
-						  <li><a href="#contact" id="lost">분실물 확인</a></li>
-						  <li><a href="#about">앨범 차트</a></li>
+						  <li><a class="active" style="cursor: pointer">사용자 목록</a></li>
+						  <li><a style="cursor: pointer">관리자 목록</a></li>
+						  <li><a id="item_list" style="cursor: pointer">분실물 목록</a></li>
+						  <li><a style="cursor: pointer">앨범 차트</a></li>
 						</ul>
             	
             	</div>

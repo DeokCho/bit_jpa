@@ -21,7 +21,7 @@ public class AdminDaoImpl implements AdminDao{
 		try {
 			BufferedWriter writer = new BufferedWriter(
 									new FileWriter(
-									new File(Data.ADMIN_PATH.toString() + Data.LIST + Data.CSV), true));
+									new File(Data.ADMINS.toString()), true));
 			writer.write(admin.toString());
 			writer.newLine();
 			writer.flush();
@@ -35,7 +35,7 @@ public class AdminDaoImpl implements AdminDao{
 		List<Admin> list = new ArrayList<>();
 		List<String> temp = new ArrayList<>();
 		try {
-			File file = new File(Data.ADMIN_PATH+"admin_list.csv");
+			File file = new File(Data.ADMINS.toString());
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message = "";
 			while ((message = reader.readLine()) != null){
@@ -44,7 +44,7 @@ public class AdminDaoImpl implements AdminDao{
 			reader.close();
 			
 		}catch(Exception e) {
-			System.out.println("에러");
+			System.out.println("admin dao 에러");
 		}
 		Admin a = null;
 		for(int i=0; i<temp.size(); i++) {

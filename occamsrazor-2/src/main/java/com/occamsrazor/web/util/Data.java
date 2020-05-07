@@ -3,30 +3,22 @@ package com.occamsrazor.web.util;
 import java.io.File;
 
 public enum Data {
-	USER_PATH, ADMIN_PATH, CSV, LIST,USER_LIST,ADMIN_LIST;
-	
+	ADMINS, USERS, ITEMS;
 	
 	
 	@Override
 	public String toString() {
-		String returnValue = "";
-		switch(this) {
-		
-		case ADMIN_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"user"+File.separator
-							+"git"+File.separator+"repository4"+File.separator+"occamsrazor-2"+File.separator
-							+"src"+File.separator+"main"+File.separator+"resources"+File.separator
-							+"static"+File.separator+"resources"+File.separator+"file"+File.separator; break;
-		case USER_PATH: returnValue = "C:"+File.separator+"Users"+File.separator+"user"+File.separator
+		String path = "C:"+File.separator+"Users"+File.separator+"user"+File.separator
 				+"git"+File.separator+"repository4"+File.separator+"occamsrazor-2"+File.separator
 				+"src"+File.separator+"main"+File.separator+"resources"+File.separator
-				+"static"+File.separator+"resources"+File.separator+"file"+File.separator; break;
-		case CSV: returnValue = ".csv";break;
-		case LIST: returnValue = "list";break;
-		case USER_LIST: returnValue="user_list.csv"; break;
-		case ADMIN_LIST: returnValue="admin_list.csv"; break;
+				+"static"+File.separator+"resources"+File.separator+"file"+File.separator; 
+		switch(this) {
+		case ADMINS: path = path.concat("admin_list.csv"); break;
+		case USERS: path = path.concat("user_list.csv"); break;
+		case ITEMS: path = path.concat("lost.csv"); break;
 		default:
 			break;
 		}
-		return returnValue;
+		return path;
 	}
 }

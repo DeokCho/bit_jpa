@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao{
 			@SuppressWarnings("resource")
 			BufferedWriter writer = new BufferedWriter(
 									 new FileWriter(
-										new File(Data.USER_LIST.toString()+Data.LIST+Data.CSV),true));
+										new File(Data.USERS.toString()),true));
 			writer.write(user.toString());
 			writer.newLine();
 			writer.flush();
@@ -37,7 +37,7 @@ public class UserDaoImpl implements UserDao{
 		List<User> list = new ArrayList<>();
 		List<String> temp = new ArrayList<>();
 		try {
-			File file = new File(Data.ADMIN_PATH + "user_list.csv");
+			File file = new File(Data.USERS.toString());
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String message = "";
 			while ((message = reader.readLine())!=null) {
@@ -46,7 +46,7 @@ public class UserDaoImpl implements UserDao{
 			reader.close();
 			
 		}catch(Exception e) {
-			System.out.println("에러");
+			System.out.println("user dao 에러");
 			
 		}
 		User u = null;

@@ -1,4 +1,4 @@
-package com.occamsrazor.lost;
+package com.occamsrazor.web.item;
 
 import java.util.List;
 
@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LostServiceImpl implements LostService {
-	@Autowired LostDao lostDao;
+public class ItemServiceImpl implements ItemService {
+	@Autowired ItemDao itemDao;
 
 	@Override
-	public List<Lost> findAll() {
+	public List<Item> findAll() {
 		System.out.println("2");
-		return lostDao.selectAll();
+		return itemDao.selectAll();
 	}
 }

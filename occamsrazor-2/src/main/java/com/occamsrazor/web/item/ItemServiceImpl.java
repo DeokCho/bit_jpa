@@ -11,7 +11,6 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<Item> findAll() {
-		System.out.println("2");
 		return itemDao.selectAll();
 	}
 }
